@@ -87,7 +87,7 @@ const Comments = ({ id, firstname, lastname, socket }) => {
   const getAllNestedCommentsBycommentId = (post_id, comment_id) => {
     axios
       .get(
-        `http://localhost:5000/comments/getnested?comment_id=${comment_id}&post_id=${post_id}`
+        `https://nigh-deploy.onrender.com/comments/getnested?comment_id=${comment_id}&post_id=${post_id}`
       )
 
       .then((Response) => {
@@ -108,7 +108,7 @@ const Comments = ({ id, firstname, lastname, socket }) => {
   const createNestedComment = (post_id, comment_id) => {
     axios
       .post(
-        `http://localhost:5000/comments/nested?comment_id=${comment_id}&post_id=${post_id}`,
+        `https://nigh-deploy.onrender.com/comments/nested?comment_id=${comment_id}&post_id=${post_id}`,
         { content: newnrested },
         { headers: { Authorization: token } }
       )
@@ -125,7 +125,7 @@ const Comments = ({ id, firstname, lastname, socket }) => {
 
   const getAllCommentsByPostId = (id) => {
     axios
-      .get(`http://localhost:5000/comments/${id}`, {
+      .get(`https://nigh-deploy.onrender.com/comments/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((Response) => {
@@ -147,7 +147,7 @@ const Comments = ({ id, firstname, lastname, socket }) => {
       image: newImage,
     };
     axios
-      .post(`http://localhost:5000/comments/${id}`, NewObj, {
+      .post(`https://nigh-deploy.onrender.com/comments/${id}`, NewObj, {
         headers: { Authorization: token },
       })
       .then((Response) => {
@@ -177,9 +177,12 @@ const Comments = ({ id, firstname, lastname, socket }) => {
     console.log(post_id, comment_id);
     try {
       await axios
-        .delete(`http://localhost:5000/comments/comment/${comment_id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        .delete(
+          `https://nigh-deploy.onrender.com/comments/comment/${comment_id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
         .then((result) => {
           dispatch(removeComment({ post_id, comment_id }));
         });

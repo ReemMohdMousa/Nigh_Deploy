@@ -40,11 +40,10 @@ const HomePosts = ({ post, socket }) => {
     };
   });
 
-
   const deletePost = async (id) => {
     try {
       await axios
-        .delete(`http://localhost:5000/posts/${id}`, {
+        .delete(`https://nigh-deploy.onrender.com/posts/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((result) => {

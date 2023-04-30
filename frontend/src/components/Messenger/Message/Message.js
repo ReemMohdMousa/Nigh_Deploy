@@ -5,9 +5,7 @@ import axios from "axios";
 import { useNavigate, useParams, Outlet } from "react-router-dom";
 import moment from "moment";
 
-
 const Messages = ({ mine, message, theOpenedConversation }) => {
-
   // console.log("************", message);
   const [friendInfo, setFriendInfo] = useState(null);
   const [theFriendId, setTheFriendId] = useState("");
@@ -35,9 +33,12 @@ const Messages = ({ mine, message, theOpenedConversation }) => {
   //loggedin user info should be changed when he changes his info (pic)
   const getFriendInfo = () => {
     axios
-      .get(`http://localhost:5000/users/others/info/${theFriendId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .get(
+        `https://nigh-deploy.onrender.com/users/others/info/${theFriendId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       .then((response) => {
         console.log(response.data.info);
         setFriendInfo(response.data.info);
@@ -70,7 +71,9 @@ const Messages = ({ mine, message, theOpenedConversation }) => {
           />
           <p className="messageText">{message.text}</p>
         </div>
-        <div className="messageBottom">{moment(`${message.createdAt}`).fromNow()}</div>
+        <div className="messageBottom">
+          {moment(`${message.createdAt}`).fromNow()}
+        </div>
       </div>
     </div>
   );
