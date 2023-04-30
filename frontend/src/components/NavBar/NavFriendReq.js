@@ -129,7 +129,7 @@ export default function BasicMenu() {
   };
 
   useEffect(() => {
-    getAllFriends();
+    // getAllFriends();
     SentRequests();
     ReceivedRequests();
   }, [isAdded, isReceived]);
