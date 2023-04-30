@@ -196,7 +196,6 @@ const Messenger = () => {
 
   useEffect(() => {
     socket?.on("GET_USERS", (users) => {
-      console.log(users);
       setOnlineUsers(users);
     });
   }, [userId]);
