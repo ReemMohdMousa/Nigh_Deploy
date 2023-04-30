@@ -177,12 +177,9 @@ const Comments = ({ id, firstname, lastname, socket }) => {
     console.log(post_id, comment_id);
     try {
       await axios
-        .delete(
-          `http://localhost:5000/comments/comment/${comment_id}`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        )
+        .delete(`http://localhost:5000/comments/comment/${comment_id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then((result) => {
           dispatch(removeComment({ post_id, comment_id }));
         });
@@ -365,47 +362,51 @@ const Comments = ({ id, firstname, lastname, socket }) => {
                                             </div>
                                           </div>
 
-                                          <div>
-                                            <Dropdown>
-                                              <Dropdown.Toggle
-                                                variant="light"
-                                                id="dropdown-basic"
-                                                style={{
-                                                  backgroundColor: "inherit",
-                                                }}
-                                              >
-                                                <svg
-                                                  xmlns="http://www.w3.org/2000/svg"
-                                                  width="16"
-                                                  height="16"
-                                                  className="bi bi-three-dots"
-                                                  onClick={() => {}}
+                                          {userId == id ? (
+                                            <div>
+                                              <Dropdown>
+                                                <Dropdown.Toggle
+                                                  variant="light"
+                                                  id="dropdown-basic"
+                                                  style={{
+                                                    backgroundColor: "inherit",
+                                                  }}
                                                 >
-                                                  <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-                                                </svg>
-                                              </Dropdown.Toggle>
+                                                  <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="16"
+                                                    height="16"
+                                                    className="bi bi-three-dots"
+                                                    onClick={() => {}}
+                                                  >
+                                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                                                  </svg>
+                                                </Dropdown.Toggle>
 
-                                              <Dropdown.Menu>
-                                                <Dropdown.Item
-                                                  onClick={() => {
-                                                    setShowEdit(true);
-                                                  }}
-                                                >
-                                                  Edit
-                                                </Dropdown.Item>
-                                                <Dropdown.Item
-                                                  onClick={() => {
-                                                    deleteComment(
-                                                      id,
-                                                      element.comment_id
-                                                    );
-                                                  }}
-                                                >
-                                                  Delete
-                                                </Dropdown.Item>
-                                              </Dropdown.Menu>
-                                            </Dropdown>
-                                          </div>
+                                                <Dropdown.Menu>
+                                                  <Dropdown.Item
+                                                    onClick={() => {
+                                                      setShowEdit(true);
+                                                    }}
+                                                  >
+                                                    Edit
+                                                  </Dropdown.Item>
+                                                  <Dropdown.Item
+                                                    onClick={() => {
+                                                      deleteComment(
+                                                        id,
+                                                        element.comment_id
+                                                      );
+                                                    }}
+                                                  >
+                                                    Delete
+                                                  </Dropdown.Item>
+                                                </Dropdown.Menu>
+                                              </Dropdown>
+                                            </div>
+                                          ) : (
+                                            ""
+                                          )}
                                         </div>
 
                                         <div>
@@ -584,37 +585,41 @@ const Comments = ({ id, firstname, lastname, socket }) => {
                                                             </div>
                                                           </div>
 
-                                                          <div>
-                                                            <Dropdown>
-                                                              <Dropdown.Toggle
-                                                                variant="light"
-                                                                id="dropdown-basic"
-                                                                style={{
-                                                                  backgroundColor:
-                                                                    "inherit",
-                                                                }}
-                                                              >
-                                                                <svg
-                                                                  xmlns="http://www.w3.org/2000/svg"
-                                                                  width="16"
-                                                                  height="16"
-                                                                  className="bi bi-three-dots"
-                                                                  onClick={() => {}}
+                                                          {userId == id ? (
+                                                            <div>
+                                                              <Dropdown>
+                                                                <Dropdown.Toggle
+                                                                  variant="light"
+                                                                  id="dropdown-basic"
+                                                                  style={{
+                                                                    backgroundColor:
+                                                                      "inherit",
+                                                                  }}
                                                                 >
-                                                                  <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-                                                                </svg>
-                                                              </Dropdown.Toggle>
+                                                                  <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="16"
+                                                                    height="16"
+                                                                    className="bi bi-three-dots"
+                                                                    onClick={() => {}}
+                                                                  >
+                                                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                                                                  </svg>
+                                                                </Dropdown.Toggle>
 
-                                                              <Dropdown.Menu>
-                                                                <Dropdown.Item>
-                                                                  Edit
-                                                                </Dropdown.Item>
-                                                                <Dropdown.Item>
-                                                                  Delete
-                                                                </Dropdown.Item>
-                                                              </Dropdown.Menu>
-                                                            </Dropdown>
-                                                          </div>
+                                                                <Dropdown.Menu>
+                                                                  <Dropdown.Item>
+                                                                    Edit
+                                                                  </Dropdown.Item>
+                                                                  <Dropdown.Item>
+                                                                    Delete
+                                                                  </Dropdown.Item>
+                                                                </Dropdown.Menu>
+                                                              </Dropdown>
+                                                            </div>
+                                                          ) : (
+                                                            ""
+                                                          )}
                                                         </div>
 
                                                         <div>
