@@ -132,7 +132,7 @@ export default function BasicMenu() {
     getAllFriends();
     SentRequests();
     ReceivedRequests();
-  }, [isAdded, isReceived, isFriend]);
+  }, [isAdded, isReceived]);
 
   //cancel friend request
   const cancelFriendReqFun = (receiver_id) => {
