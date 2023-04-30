@@ -7,7 +7,7 @@ import moment from "moment";
 
 const Messages = ({ mine, message, theOpenedConversation, friendInfo }) => {
   // console.log("************", message);
-  const [friendInfo, setFriendInfo] = useState(null);
+  // const [friendInfo, setFriendInfo] = useState(null);
   // const [theFriendId, setTheFriendId] = useState("");
 
   //dispatch
