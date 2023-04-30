@@ -11,6 +11,7 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setNotifications } from "../redux/reducers/posts";
+
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);

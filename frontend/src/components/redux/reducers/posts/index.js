@@ -134,9 +134,6 @@ export const posts = createSlice({
     },
     setNotifications: (state, action) => {
       state.notifications = action.payload;
-      console.log(action.payload);
-
-      state.homePosts = action.payload;
     },
 
     setSharedPosts: (state, action) => {

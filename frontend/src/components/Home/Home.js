@@ -81,6 +81,7 @@ const Home = () => {
         console.log(err);
       });
   };
+
   const [socketnotification, setSocketNotification] = useState(false);
 
   useEffect(() => {
@@ -227,7 +228,7 @@ const Home = () => {
                         homePosts.map((elem) => {
                           return (
                             <HomePosts
-                              post={elem}
+                              homepost={elem}
                               socket={socket}
                               key={elem.post_id}
                             />
